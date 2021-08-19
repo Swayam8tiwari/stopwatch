@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopwatch</title> 
+    <style> 
+    body{ 
+        background-color: darkblue;
+    }
+    .clock{ 
+      text-align: center;  
+    margin-top: 16%;
+    font-size: 577%; 
+    } 
+    .digit{ 
+        background-color: chartreuse;
+    padding: 2%;
+    border-radius: 10px; 
+    text-align: center;
+    } 
+    .text{ 
+     color: yellow;
+     }    
+      
+       
+    @media screen and (max-width: 500px){
+        .clock{ 
+      text-align: center;  
+    margin-top: 16%;
+    font-size: 300%; 
+    }   
+    }
+       
+    .b{ 
+        margin: 8%;
+    } 
+    .btn{ 
+            width: 32%;
+    background-color: aqua;
+    padding: 2%;
+    border-radius: 28px;
+    font-size: 155%; 
+    
+    }
+    </style>
+</head>
+<body> 
+    <div class="clock"> 
+        <span class="digit" id="hour">00</span>
+        <span class="text">:</span>
+        <span class="digit" id="minute">00</span>
+        <span class="text">:</span>
+        <span class="digit" id="second">00</span>  
+    </div> 
+    <div class="b"> 
+        <button class="btn" id="btnstart" onclick="start()">start</button>
+        <button class="btn" onclick="reset()">reset</button> 
+        <button class="btn" onclick="stop()">stop</button>
+    </div>
+    <script> 
+     hr=0 
+     sec=0 
+     min=0 
+     c=0  
+     w=true
+     function start(){ 
+        w=true 
+        watch() 
+     var x = document. getElementById("btnstart");
+     x. style. display = "none";
+     
+     }  
+     function stop(){ 
+         w=false; 
+var x = document. getElementById("btnstart"); 
+if (x. style. display === "none") {
+x. style. display = "inline-block";
+}
+     } 
+     function reset(){ 
+var x = document. getElementById("btnstart"); 
+if (x. style. display === "none") {
+x. style. display = "inline-block"; 
+} 
+        hr=0 
+     sec=0 
+     min=0 
+     w=false;
+     let a=document.getElementById("second") 
+     a.innerHTML=sec;
+     let b=document.getElementById("minute") 
+     b.innerHTML=min;
+     let d=document.getElementById("hour") 
+     d.innerHTML=hr;
+      }
+     function watch(){ 
+        if(w){
+            c=c+1;  
+        if(c==100) 
+         {sec=sec+1; 
+         c=0;} 
+         if(sec==60) 
+         {min=min+1; 
+         sec=0;}
+     setTimeout("watch()",10);  
+    let a=document.getElementById("second") 
+     a.innerHTML=sec;
+     let b=document.getElementById("minute") 
+     b.innerHTML=min;
+     let d=document.getElementById("hour") 
+     d.innerHTML=hr;
+        }  
+     } 
+     </script>
+</body>
+</html>
